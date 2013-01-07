@@ -6,7 +6,7 @@ Control::Control()
 }
 
 Control::Control(Setting setting):
-threshold_(50)
+threshold_(50), sensitivity_(75)
 {
 	string temp=setting.getAttribute();
 	size_t pos=temp.find("_");
@@ -60,26 +60,30 @@ threshold_(50)
 	}
 }
 
-/*bool Control::axisMoved()
+void Control::setSensitivity(int sensitivity)
+{
+	sensitivity_=sensitivity;
+}
+
+int Control::axisPosition()
 {
 	int position=0;
 	if(type_=="Joystick")
 	{
 		position=sf::Joystick::getAxisPosition(joystick_, joystickAxis_)*joystickDirection_;
-		if(position>threshold_ && lastJoystickPosition_<=threshold_)
+		//scaling with sensitivity
+		position=(double)position*(100/(double)(100-sensitivity_));
+		if(position>100)
 		{
-			lastJoystickPosition_=position;
-			return position;
+			position=100;
 		}
-		else
+		if(position<0)
 		{
-			lastJoystickPosition_=position;
-			return 0;
+			position=0;
 		}
 	}
-	lastJoystickPosition_=0;
-	return 0;
-}*/
+	return position;
+}
 
 void Control::setThreshold(int threshold)
 {

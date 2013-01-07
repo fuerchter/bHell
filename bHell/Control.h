@@ -13,6 +13,8 @@ public:
 	Control();
 	Control(Setting setting);
 
+	void setSensitivity(int sensitivity);
+	//gets current position dependent from this Control's sensitivity
 	int axisPosition();
 	void setThreshold(int threshold);
 	bool axisMoved();

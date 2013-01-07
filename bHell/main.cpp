@@ -15,7 +15,7 @@ int main()
 	//[make config order irrelevant] and fix empty line bug
 	//[changeInt reset if nothing entered]
 	//implement mouse
-	//add axisPosition and sensitivity to Control (and changing complete axis sensitivity and Up/Down/Left/Right autocomplete)
+	//[add axisPosition and sensitivity to Control] and changing complete axis sensitivity and Up/Down/Left/Right autocomplete
 	//convert axis position from int to float
 	//Second player
 	//outsource window creation
