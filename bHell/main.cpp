@@ -11,20 +11,6 @@ using GameStates::GameState;
 
 int main()
 {
-	//TODO:
-	//[make config order irrelevant] and fix empty line bug
-	//[changeInt reset if nothing entered]
-	//implement mouse
-	//[add axisPosition and sensitivity to Control] and changing complete axis sensitivity and Up/Down/Left/Right autocomplete
-	//convert axis position from int to float
-	//Second player
-	//outsource window creation
-	//take care of Start state
-	//check Setting and Control(types)
-	//make GameMenu and main more abstract
-	//resolution independence!
-	//Memory/CPU usage
-
 	GameState state=GameStates::Video;
 	GameMenu menu(state);
 	SettingCategory controls=menu.getControls();
