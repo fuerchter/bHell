@@ -1,6 +1,9 @@
 #ifndef CONTROL
 #define CONTROL
 
+#include <iostream>
+using namespace std;
+
 #include "SFML\Window.hpp"
 #include "Thor\Events\InputNames.hpp"
 
@@ -15,7 +18,7 @@ public:
 
 	void setSensitivity(int sensitivity);
 	//gets current position dependent from this Control's sensitivity
-	int axisPosition();
+	float axisPosition();
 	void setThreshold(int threshold);
 	bool axisMoved();
 	bool buttonPressed();
@@ -29,7 +32,7 @@ private:
 	int joystickButton_;
 	sf::Joystick::Axis joystickAxis_;
 	int joystickDirection_;
-	int lastJoystickPosition_;
+	float lastJoystickPosition_;
 	int threshold_;
 	int sensitivity_;
 };

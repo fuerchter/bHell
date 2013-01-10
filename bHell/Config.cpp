@@ -104,11 +104,13 @@ void Config::removeCategory(SettingCategory category)
 			while(file.good())
 			{
 				getline(file, temp);
+				//reads the next lines without using them to skip past the category to be removed
 				if(temp=="["+ category.getTitle()+ "]")
 				{
 					while(file.good())
 					{
 						getline(file, temp);
+						//the category was skipped over so the function goes back to writing lines
 						if(temp.empty() || temp[0]=='[')
 						{
 							break;
@@ -117,9 +119,10 @@ void Config::removeCategory(SettingCategory category)
 				}
 				else
 				{
-					if(length==file.tellg())
+					//if this line is the last of a category (a newline generally) nothing is written (fixed newline bug)
+					if(file.peek()==file.eof() || file.peek()=='[')
 					{
-						newFile << temp;
+
 					}
 					else
 					{

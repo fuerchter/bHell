@@ -164,6 +164,7 @@ GameState GameMenu::update(sf::Event currentEvent)
 		}
 		state_=prev;
 	}
+	input_.getControl("Left")->axisPosition();
 	return state_;
 }
 
