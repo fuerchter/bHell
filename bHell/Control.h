@@ -12,6 +12,11 @@ using namespace std;
 class Control
 {
 public:
+	enum Type
+	{
+		Error, Keyboard, MouseButton, JoystickButton, Joystick
+	};
+
 	//Writes Error into type
 	Control();
 	Control(Setting setting);
@@ -25,7 +30,7 @@ public:
 	bool menuButtonPressed(sf::Event currentEvent);
 private:
 	//type is no enum because it has to be read out from the config
-	string type_;
+	Type type_;
 	sf::Keyboard::Key key_;
 	sf::Mouse::Button mouseButton_;
 	int joystick_;

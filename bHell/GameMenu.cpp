@@ -109,12 +109,12 @@ GameState GameMenu::update(sf::Event currentEvent)
 	{
 		if(menu_.hasCurrSetting())
 		{
-			if(menu_.getCurrType()==SettingTypes::Int)
+			if(menu_.getCurrType()==Setting::Int)
 			{
 				changeInt_=true;
 				currAttribute_="";
 			}
-			else if(menu_.getCurrType()==SettingTypes::Bool)
+			else if(menu_.getCurrType()==Setting::Bool)
 			{
 				menu_.getCurrSetting()->toggleBool();
 				if(state_==GameStates::Video)
@@ -124,7 +124,7 @@ GameState GameMenu::update(sf::Event currentEvent)
 					config_.writeCategory(video_);
 				}
 			}
-			else if(menu_.getCurrType()==SettingTypes::Input)
+			else if(menu_.getCurrType()==Setting::Input)
 			{
 				changeInput_=true;
 			}

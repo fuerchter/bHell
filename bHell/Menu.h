@@ -36,7 +36,7 @@ public:
 	//Returns null if current element does not contain a setting
 	string getCurrAtt();
 	void setCurrAtt(string attribute);
-	SettingType getCurrType();
+	Setting::Type getCurrType();
 
 	SettingCategory constructCat();
 private:

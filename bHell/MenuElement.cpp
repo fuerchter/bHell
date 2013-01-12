@@ -4,13 +4,17 @@ MenuElement::MenuElement(string title, GameState action):
 title_(title), action_(action)
 {
 	setting_=NULL;
-	hasSetting_=false;
 }
 
 MenuElement::MenuElement(string title, GameState action, Setting *setting):
 title_(title), action_(action), setting_(setting)
 {
-	hasSetting_=true;
+
+}
+
+MenuElement::~MenuElement()
+{
+	delete setting_;
 }
 
 
@@ -26,17 +30,17 @@ GameState MenuElement::getAction()
 
 Setting *MenuElement::getSetting()
 {
-	if(hasSetting_)
-	{
-		return setting_;
-	}
-	else
-	{
-		return NULL;
-	}
+	return setting_;
 }
 
 bool MenuElement::hasSetting()
 {
-	return hasSetting_;
+	if(setting_!=NULL)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

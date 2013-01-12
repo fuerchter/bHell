@@ -10,6 +10,7 @@ class MenuElement
 public:
 	MenuElement(string title, GameState action);
 	MenuElement(string title, GameState action, Setting *setting);
+	~MenuElement();
 
 	string getTitle();
 	GameState getAction();
@@ -17,7 +18,6 @@ public:
 	Setting *getSetting();
 	bool hasSetting();
 private:
-	bool hasSetting_;
 	string title_;
 	GameState action_;
 	Setting *setting_;

@@ -164,7 +164,7 @@ void Menu::setCurrAtt(string attribute)
 	}
 }
 
-SettingType Menu::getCurrType()
+Setting::Type Menu::getCurrType()
 {
 	if(hasCurrSetting())
 	{
@@ -172,7 +172,7 @@ SettingType Menu::getCurrType()
 	}
 	else
 	{
-		return SettingTypes::Error;
+		return Setting::Type::Error;
 	}
 }
 

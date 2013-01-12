@@ -10,21 +10,21 @@ title_(title)
 		width << desktop.width;
 		stringstream height;
 		height << desktop.height;
-		settings_.push_back(Setting("Width", width.str(), SettingTypes::Int));
-		settings_.push_back(Setting("Height", height.str(), SettingTypes::Int));
-		settings_.push_back(Setting("VSync", "0", SettingTypes::Bool));
-		settings_.push_back(Setting("Framecap", "60", SettingTypes::Int));
-		settings_.push_back(Setting("Windowed", "0", SettingTypes::Bool));
-		settings_.push_back(Setting("Show FPS", "0", SettingTypes::Bool));
+		settings_.push_back(Setting("Width", width.str(), Setting::Int));
+		settings_.push_back(Setting("Height", height.str(), Setting::Int));
+		settings_.push_back(Setting("VSync", "0", Setting::Bool));
+		settings_.push_back(Setting("Framecap", "60", Setting::Int));
+		settings_.push_back(Setting("Windowed", "0", Setting::Bool));
+		settings_.push_back(Setting("Show FPS", "0", Setting::Bool));
 	}
 	else if(title_=="Controls")
 	{
-		settings_.push_back(Setting("Up", "Keyboard_Up", SettingTypes::Input));
-		settings_.push_back(Setting("Down", "Keyboard_Down", SettingTypes::Input));
-		settings_.push_back(Setting("Left", "Keyboard_Left", SettingTypes::Input));
-		settings_.push_back(Setting("Right", "Keyboard_Right", SettingTypes::Input));
-		settings_.push_back(Setting("Enter", "Keyboard_Return", SettingTypes::Input));
-		settings_.push_back(Setting("Back", "Keyboard_Escape", SettingTypes::Input));
+		settings_.push_back(Setting("Up", "Keyboard_Up", Setting::Input));
+		settings_.push_back(Setting("Down", "Keyboard_Down", Setting::Input));
+		settings_.push_back(Setting("Left", "Keyboard_Left", Setting::Input));
+		settings_.push_back(Setting("Right", "Keyboard_Right", Setting::Input));
+		settings_.push_back(Setting("Enter", "Keyboard_Return", Setting::Input));
+		settings_.push_back(Setting("Back", "Keyboard_Escape", Setting::Input));
 	}
 	else
 	{
@@ -57,7 +57,7 @@ Setting SettingCategory::getSetting(string title)
 			return settings_[i];
 		}
 	}
-	return Setting("null", "0", SettingTypes::Error);
+	return Setting("null", "0", Setting::Error);
 }
 
 int SettingCategory::getSeSize()

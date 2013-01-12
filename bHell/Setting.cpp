@@ -1,6 +1,6 @@
 #include "Setting.h"
 
-Setting::Setting(string title, string attribute, SettingType type):
+Setting::Setting(string title, string attribute, Type type):
 title_(title), attribute_(attribute), type_(type)
 {
 
@@ -19,7 +19,7 @@ string Setting::getAttribute()
 int Setting::getAttInt()
 {
 	int res=0;
-	if(type_==SettingTypes::Int)
+	if(type_==Int)
 	{
 		stringstream convert(getAttribute());
 		if(!(convert >> res))
@@ -37,7 +37,7 @@ int Setting::getAttInt()
 bool Setting::getAttBool()
 {
 	int res=0;
-	if(type_==SettingTypes::Bool)
+	if(type_==Bool)
 	{
 		stringstream convert(getAttribute());
 		if(!(convert >> res))
@@ -59,7 +59,7 @@ void Setting::setAttribute(string attribute)
 
 void Setting::toggleBool()
 {
-	if(type_==SettingTypes::Bool)
+	if(type_==Bool)
 	{
 		if(attribute_=="0")
 		{
@@ -76,7 +76,7 @@ void Setting::toggleBool()
 	}
 }
 
-SettingType Setting::getType()
+Setting::Type Setting::getType()
 {
 	return type_;
 }
