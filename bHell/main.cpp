@@ -16,6 +16,8 @@ int main()
 	SettingCategory controls=menu.getControls();
 	SettingCategory video=menu.getVideo();
 
+	
+
 	int width=video.getSetting("Width").getAttInt();
 	int height=video.getSetting("Height").getAttInt();
 	bool vsync=video.getSetting("VSync").getAttBool();

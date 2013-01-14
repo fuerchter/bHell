@@ -10,7 +10,8 @@ class MenuElement
 public:
 	MenuElement(string title, GameState action);
 	MenuElement(string title, GameState action, Setting *setting);
-	~MenuElement();
+	//Causes runtime error
+	//~MenuElement();
 
 	string getTitle();
 	GameState getAction();

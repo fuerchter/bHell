@@ -12,10 +12,10 @@ title_(title), action_(action), setting_(setting)
 
 }
 
-MenuElement::~MenuElement()
+/*MenuElement::~MenuElement()
 {
 	delete setting_;
-}
+}*/
 
 
 string MenuElement::getTitle()
