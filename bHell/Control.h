@@ -1,9 +1,6 @@
 #ifndef CONTROL
 #define CONTROL
 
-#include <iostream>
-using namespace std;
-
 #include "SFML\Window.hpp"
 #include "Thor\Events\InputNames.hpp"
 

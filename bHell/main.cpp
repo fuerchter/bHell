@@ -5,18 +5,17 @@ using namespace std;
 #include "SFML\Graphics.hpp"
 #include "SFML\Window.hpp"
 
-#include "GameMenu.h"
+#include "MenuManager.h"
 #include "GameStates.h"
 using GameStates::GameState;
 
 int main()
 {
-	GameState state=GameStates::Video;
-	GameMenu menu(state);
-	SettingCategory controls=menu.getControls();
-	SettingCategory video=menu.getVideo();
+	GameState state=GameStates::Menu;
 
-	
+	MenuManager menu(state);
+	SettingCategory controls=menu.getCategory(GameStates::Controls);
+	SettingCategory video=menu.getCategory(GameStates::Video);
 
 	int width=video.getSetting("Width").getAttInt();
 	int height=video.getSetting("Height").getAttInt();
@@ -85,9 +84,9 @@ int main()
 			else
 			{
 				state=menu.update(currentEvent);
-				if(menu.videoChanged())
+				if(menu.categoryChanged(GameStates::Video))
 				{
-					video=menu.getVideo();
+					video=menu.getCategory(GameStates::Video);
 					width=video.getSetting("Width").getAttInt();
 					height=video.getSetting("Height").getAttInt();
 					vsync=video.getSetting("VSync").getAttBool();

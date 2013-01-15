@@ -8,6 +8,7 @@
 class ControlManager
 {
 public:
+	ControlManager();
 	ControlManager(SettingCategory settings);
 
 	Control *getControl(string name);

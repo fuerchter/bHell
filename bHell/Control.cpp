@@ -85,7 +85,6 @@ float Control::axisPosition()
 		{
 			position=0;
 		}
-		cout << position << endl;
 	}
 	return position;
 }

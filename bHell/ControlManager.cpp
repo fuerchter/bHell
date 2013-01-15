@@ -1,5 +1,10 @@
 #include "ControlManager.h"
 
+ControlManager::ControlManager()
+{
+
+}
+
 ControlManager::ControlManager(SettingCategory settings)
 {
 	for(int i=0; i<settings.getSeSize(); i++)

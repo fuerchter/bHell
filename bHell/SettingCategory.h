@@ -16,6 +16,7 @@ public:
 	SettingCategory(string title);
 	SettingCategory(string title, vector<Setting> settings);
 	string getTitle();
+	bool isEmpty();
 	Setting getSetting(int index);
 	//Searches setting via title, returns setting with type Error if it was not found
 	Setting getSetting(string title);

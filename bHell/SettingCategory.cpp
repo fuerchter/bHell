@@ -43,6 +43,11 @@ string SettingCategory::getTitle()
 	return title_;
 }
 
+bool SettingCategory::isEmpty()
+{
+	return settings_.empty();
+}
+
 Setting SettingCategory::getSetting(int index)
 {
 	return settings_[index];

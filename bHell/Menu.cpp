@@ -1,5 +1,10 @@
 #include "Menu.h"
 
+Menu::Menu()
+{
+
+}
+
 Menu::Menu(GameState state):
 currNo_(0)
 {
