@@ -1,9 +1,0 @@
-using string as SettingCategory attribute (having to work with type in main)
-
-including Config in MenuElement
-including GameStates in MenuElement
-some MenuElements having a Setting and some not
-working with Setting pointer in MenuElement
-
-converting SettingCategory to MenuElement in Menu constructor
-parameter count of Menu constructor
