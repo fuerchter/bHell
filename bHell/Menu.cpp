@@ -177,7 +177,7 @@ Setting::Type Menu::getCurrType()
 	}
 	else
 	{
-		return Setting::Type::Error;
+		return Setting::Error;
 	}
 }
 
