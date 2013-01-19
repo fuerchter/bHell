@@ -10,14 +10,11 @@ using namespace std;
 class Config
 {
 public:
-	bool doesCategoryExist(SettingCategory category);
-	SettingCategory readCategory(SettingCategory category);
-	SettingCategory getCategory(SettingCategory category);
-	void removeCategory(SettingCategory category);
-	void writeCategory(SettingCategory category);
-	
-	string readLine();
-	void writeLine();
+	static bool doesCategoryExist(SettingCategory category);
+	static SettingCategory readCategory(SettingCategory category);
+	static SettingCategory getCategory(SettingCategory category);
+	static void removeCategory(SettingCategory category);
+	static void writeCategory(SettingCategory category);
 };
 
 #endif

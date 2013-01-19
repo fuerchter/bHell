@@ -30,7 +30,6 @@ private:
 
 	sf::Font font_;
 	vector<sf::Text> texts_;
-	Config config_;
 	//CONTROLMANAGER MAY NEED TO BE ASSIGNED TO MENUCONTROLS
 	ControlManager input_;
 };

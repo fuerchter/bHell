@@ -6,9 +6,9 @@ state_(state), menu_(state), currAttribute_("")
 	font_.loadFromFile("arial.ttf");
 
 	SettingCategory video("Video");
-	video=config_.getCategory(video);
+	video=Config::getCategory(video);
 	SettingCategory controls("Controls");
-	controls=config_.getCategory(controls);
+	controls=Config::getCategory(controls);
 	menus_.insert(pair<GameState, Menu>(GameStates::Menu, Menu(GameStates::Menu)));
 	menus_.insert(pair<GameState, Menu>(GameStates::Options, Menu(GameStates::Options)));
 	menus_.insert(pair<GameState, Menu>(GameStates::Video, Menu(GameStates::Video, GameStates::Options, video)));
@@ -31,7 +31,7 @@ state_(state), menu_(state), currAttribute_("")
 	{
 		Menu te=it->second;
 		SettingCategory t=te.constructCat();
-		t=config_.getCategory(t);
+		t=Config::getCategory(t);
 		//if the extracted Category is empty the Menu stays the same
 		if(t.getSeSize()==0)
 		{
@@ -192,7 +192,7 @@ bool MenuManager::categoryChanged(GameState state)
 void MenuManager::changeSetting(Setting::Type type)
 {
 	change_=Setting::Error;
-	config_.writeCategory(menu_.constructCat());
+	Config::writeCategory(menu_.constructCat());
 	if(std::find(changed_.begin(), changed_.end(), state_) == changed_.end())
 	{
 		changed_.push_back(state_);

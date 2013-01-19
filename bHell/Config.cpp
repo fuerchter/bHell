@@ -161,27 +161,3 @@ void Config::writeCategory(SettingCategory category)
 		file.close();
 	}
 }
-
-string Config::readLine()
-{
-	string temp="";
-
-	fstream file("abc.txt");
-	if(file.is_open())
-	{
-		getline(file, temp);
-		file.close();
-	}
-
-	return temp;
-}
-
-void Config::writeLine()
-{
-	fstream file("abc.txt");
-	if(file.is_open())
-	{
-		file << "TEST";
-		file.close();
-	}
-}
