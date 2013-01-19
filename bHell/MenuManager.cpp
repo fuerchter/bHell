@@ -65,6 +65,7 @@ GameState MenuManager::update(sf::Event currentEvent)
 			if(isdigit(current))
 			{
 				currAttribute_+=current;
+				menu_.setCurrAtt(currAttribute_);
 			}
 		}
 	}
