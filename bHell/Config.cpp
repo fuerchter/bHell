@@ -95,10 +95,6 @@ void Config::removeCategory(SettingCategory category)
 		ofstream newFile("newconfig.cfg");
 		fstream file("config.cfg");
 
-		file.seekg (0, ios::end);
-		int length = file.tellg();
-		file.seekg (0, ios::beg);
-
 		if(file.is_open())
 		{
 			while(file.good())

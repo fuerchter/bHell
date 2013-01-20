@@ -1,11 +1,9 @@
-#include <iostream>
-using namespace std;
-
 #include "SFML\System.hpp"
 #include "SFML\Graphics.hpp"
 #include "SFML\Window.hpp"
 
 #include "MenuManager.h"
+#include "WindowHelper.h"
 #include "GameStates.h"
 using GameStates::GameState;
 
@@ -17,52 +15,27 @@ int main()
 	SettingCategory controls=menu.getCategory(GameStates::Controls);
 	SettingCategory video=menu.getCategory(GameStates::Video);
 
-	int width=video.getSetting("Width").getAttInt();
-	int height=video.getSetting("Height").getAttInt();
-	bool vsync=video.getSetting("VSync").getAttBool();
-	int framecap=video.getSetting("Framecap").getAttInt();
-	bool windowed=video.getSetting("Windowed").getAttBool();
-	bool showfps=video.getSetting("Show FPS").getAttBool();
-
-	sf::RenderWindow window;
-	if(windowed)
-	{
-		window.create(sf::VideoMode(width, height), "Game", sf::Style::Close);
-	}
-	else
-	{
-		window.create(sf::VideoMode(width, height), "Game", sf::Style::Fullscreen);
-	}
-	window.setFramerateLimit(framecap);
-	window.setVerticalSyncEnabled(vsync);
+	sf::RenderWindow *window=new sf::RenderWindow;
+	WindowHelper helper(video);
+	helper.createWindow(window);
 
 	sf::Clock clock;
 
-	while(window.isOpen())
+	while(window->isOpen())
 	{
 		sf::Time time=clock.getElapsedTime();
 		clock.restart();
-		if(showfps)
-		{
-			int fps;
-			if(time.asMicroseconds()==0)
-			{
-				fps=0;
-			}
-			else
-			{
-				fps=1000000/time.asMicroseconds();
-			}
-			cout << fps << endl;
-		}
+
+		//FIND A WAY TO GET RID OF THIS
+		helper.showFps(time);
 
 		sf::Event currentEvent;
-		while(window.pollEvent(currentEvent))
+		while(window->pollEvent(currentEvent))
 		{
 			switch(currentEvent.type)
 			{
 			case sf::Event::Closed:
-				window.close();
+				window->close();
 				break;
 			/*case sf::Event::JoystickMoved:
 				cout << "Joystick: " << currentEvent.joystickMove.joystickId << endl;
@@ -75,7 +48,7 @@ int main()
 
 			if(state==GameStates::Quit)
 			{
-				window.close();
+				window->close();
 			}
 			else if(state==GameStates::Start)
 			{
@@ -87,22 +60,8 @@ int main()
 				if(menu.categoryChanged(GameStates::Video))
 				{
 					video=menu.getCategory(GameStates::Video);
-					width=video.getSetting("Width").getAttInt();
-					height=video.getSetting("Height").getAttInt();
-					vsync=video.getSetting("VSync").getAttBool();
-					framecap=video.getSetting("Framecap").getAttInt();
-					windowed=video.getSetting("Windowed").getAttBool();
-					showfps=video.getSetting("Show FPS").getAttBool();
-					if(windowed)
-					{
-						window.create(sf::VideoMode(width, height), "Game", sf::Style::Close);
-					}
-					else
-					{
-						window.create(sf::VideoMode(width, height), "Game", sf::Style::Fullscreen);
-					}
-					window.setFramerateLimit(framecap);
-					window.setVerticalSyncEnabled(vsync);
+					helper.setVideo(video);
+					helper.createWindow(window);
 				}
 				if(state==GameStates::Start)
 				{
@@ -110,17 +69,17 @@ int main()
 				}
 			}
 		}
-		window.clear(sf::Color(255,0,0));
+		window->clear(sf::Color(255,0,0));
 
 		if(state!=GameStates::Start && state!=GameStates::Quit)
 		{
 			vector<sf::Text> texts=menu.constructText();
 			for(int i=0; i<texts.size(); i++)
 			{
-				window.draw(texts[i]);
+				window->draw(texts[i]);
 			}
 		}
 
-		window.display();
+		window->display();
 	}
 }

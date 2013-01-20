@@ -20,6 +20,7 @@ public:
 	Setting getSetting(int index);
 	//Searches setting via title, returns setting with type Error if it was not found
 	Setting getSetting(string title);
+	void setSetting(int index, Setting setting);
 	int getSeSize();
 private:
 	string title_;

@@ -65,6 +65,11 @@ Setting SettingCategory::getSetting(string title)
 	return Setting("null", "0", Setting::Error);
 }
 
+void SettingCategory::setSetting(int index, Setting setting)
+{
+	settings_[index]=setting;
+}
+
 int SettingCategory::getSeSize()
 {
 	return settings_.size();
