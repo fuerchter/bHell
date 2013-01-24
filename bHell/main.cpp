@@ -11,9 +11,9 @@ int main()
 {
 	GameState state=GameStates::Menu;
 
-	MenuManager menu(state);
-	SettingCategory controls=menu.getCategory(GameStates::Controls);
-	SettingCategory video=menu.getCategory(GameStates::Video);
+	MenuManager *menu=new MenuManager(state);
+	SettingCategory controls=menu->getCategory(GameStates::Controls);
+	SettingCategory video=menu->getCategory(GameStates::Video);
 
 	sf::RenderWindow *window=new sf::RenderWindow;
 	WindowHelper helper(video);
@@ -56,16 +56,18 @@ int main()
 			}
 			else
 			{
-				state=menu.update(currentEvent);
-				if(menu.categoryChanged(GameStates::Video))
+				state=menu->update(currentEvent);
+				if(menu->categoryChanged(GameStates::Video))
 				{
-					video=menu.getCategory(GameStates::Video);
+					video=menu->getCategory(GameStates::Video);
 					helper.setVideo(video);
 					helper.createWindow(window);
 				}
 				if(state==GameStates::Start)
 				{
 					//INITIALIZE MAIN AND REMOVE MENU
+					delete menu;
+					menu=NULL;
 				}
 			}
 		}
@@ -73,7 +75,7 @@ int main()
 
 		if(state!=GameStates::Start && state!=GameStates::Quit)
 		{
-			vector<sf::Text> texts=menu.constructText();
+			vector<sf::Text> texts=menu->constructText();
 			for(int i=0; i<texts.size(); i++)
 			{
 				window->draw(texts[i]);

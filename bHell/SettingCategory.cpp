@@ -17,7 +17,16 @@ title_(title)
 		settings_.push_back(Setting("Windowed", "0", Setting::Bool));
 		settings_.push_back(Setting("Show FPS", "0", Setting::Bool));
 	}
-	else if(title_=="Controls")
+	else if(title_.find("Controls")==0)
+	{
+		settings_.push_back(Setting("Up", "Keyboard_Up", Setting::Input));
+		settings_.push_back(Setting("Down", "Keyboard_Down", Setting::Input));
+		settings_.push_back(Setting("Left", "Keyboard_Left", Setting::Input));
+		settings_.push_back(Setting("Right", "Keyboard_Right", Setting::Input));
+		settings_.push_back(Setting("Enter", "Keyboard_Return", Setting::Input));
+		settings_.push_back(Setting("Back", "Keyboard_Escape", Setting::Input));
+	}
+	else if(title_=="Menu Controls")
 	{
 		settings_.push_back(Setting("Up", "Keyboard_Up", Setting::Input));
 		settings_.push_back(Setting("Down", "Keyboard_Down", Setting::Input));

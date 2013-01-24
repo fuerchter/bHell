@@ -61,3 +61,16 @@ void WindowHelper::showFps(sf::Time time)
 		cout << calculateFps(time) << endl;
 	}
 }
+
+
+sf::Vector2f WindowHelper::getFactor()
+{
+	float width=(float)video_.getSetting("Width").getAttInt();
+	float height=(float)video_.getSetting("Height").getAttInt();
+	return sf::Vector2f(width/(float)defWidth, height/(float)defHeight);
+}
+
+sf::Vector2f WindowHelper::relPosition(sf::Vector2f position)
+{
+	return sf::Vector2f(position.x*getFactor().x, position.y*getFactor().y);
+}

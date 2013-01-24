@@ -134,7 +134,7 @@ vector<sf::Text> Menu::constructText(sf::Font &font, int vSpacing, sf::Color nor
 		}
 		texts.push_back(sf::Text(titles[i], font));
 
-		texts[i].setPosition(0, i*vSpacing);
+		texts[i].setPosition((float)0, (float)(i*vSpacing));
 
 		if(getCurrNo()==i)
 		{
