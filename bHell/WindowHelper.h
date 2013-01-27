@@ -10,6 +10,7 @@ using namespace std;
 #include "SFML\Window.hpp"
 
 #include "SettingCategory.h"
+#include "Presets.h"
 
 class WindowHelper
 {

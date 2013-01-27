@@ -8,7 +8,6 @@
 class MenuManager
 {
 public:
-	MenuManager(GameState state);
 	MenuManager(GameState state, map<GameState, Menu> menus);
 	GameState update(sf::Event currentEvent);
 	//Creates MenuTexts, font has to be changed internally

@@ -107,12 +107,19 @@ bool Control::axisMoved()
 		//axis passed threshold
 		if(position>threshold_ && lastJoystickPosition_<=threshold_)
 		{
-			lastJoystickPosition_=(int)position;
-			return position;
+			lastJoystickPosition_=(float)position;
+			if(position!=0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
-			lastJoystickPosition_=(int)position;
+			lastJoystickPosition_=(float)position;
 			return 0;
 		}
 	}

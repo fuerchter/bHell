@@ -40,6 +40,7 @@ bool Setting::getAttBool()
 	if(type_==Bool)
 	{
 		stringstream convert(getAttribute());
+		//get current value of the bool attribute
 		if(!(convert >> res))
 		{
 			res=0;
@@ -49,7 +50,15 @@ bool Setting::getAttBool()
 	{
 		res=0;
 	}
-	return res;
+
+	if(res!=0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void Setting::setAttribute(string attribute)

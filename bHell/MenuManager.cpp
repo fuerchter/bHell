@@ -1,27 +1,7 @@
 #include "MenuManager.h"
 
-MenuManager::MenuManager(GameState state):
-state_(state), menu_(state), currAttribute_("")
-{
-	font_.loadFromFile("arial.ttf");
-
-	SettingCategory video("Video");
-	video=Config::getCategory(video);
-	SettingCategory controls("Controls");
-	controls=Config::getCategory(controls);
-	menus_.insert(pair<GameState, Menu>(GameStates::Menu, Menu(GameStates::Menu)));
-	menus_.insert(pair<GameState, Menu>(GameStates::Options, Menu(GameStates::Options)));
-	menus_.insert(pair<GameState, Menu>(GameStates::Video, Menu(GameStates::Video, GameStates::Options, video)));
-	menus_.insert(pair<GameState, Menu>(GameStates::Controls, Menu(GameStates::Controls, GameStates::Options, controls)));
-
-	input_=ControlManager(controls);
-
-	menu_=menus_[state];
-	texts_=constructText();
-}
-
 MenuManager::MenuManager(GameState state, map<GameState, Menu> menus):
-state_(state), menu_(state), currAttribute_("")
+state_(state), currAttribute_("")
 {
 	font_.loadFromFile("arial.ttf");
 	

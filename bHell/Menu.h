@@ -10,8 +10,6 @@ class Menu
 {
 public:
 	Menu();
-	//Creates a preset menu from a GameState, members may be uninitialized if state didn't match a preset
-	Menu(GameState state);
 	//Converts SettingCategory to MenuElement vector to create a menu
 	Menu(GameState state, GameState escAction, SettingCategory category);
 	//Most abstract constructor

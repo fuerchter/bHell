@@ -5,30 +5,6 @@ Menu::Menu()
 
 }
 
-Menu::Menu(GameState state):
-currNo_(0)
-{
-	if(state==GameStates::Menu)
-	{
-		title_="Menu";
-		elements_.push_back(MenuElement("Start", GameStates::Start));
-		elements_.push_back(MenuElement("Options", GameStates::Options));
-		elements_.push_back(MenuElement("Quit", GameStates::Quit));
-		escAction_=GameStates::Quit;
-	}
-	else if(state==GameStates::Options)
-	{
-		title_="Options";
-		elements_.push_back(MenuElement("Video", GameStates::Video));
-		elements_.push_back(MenuElement("Controls", GameStates::Controls));
-		escAction_=GameStates::Menu;
-	}
-	else
-	{
-
-	}
-}
-
 Menu::Menu(GameState state, GameState escAction, SettingCategory category):
 currNo_(0), escAction_(escAction)
 {

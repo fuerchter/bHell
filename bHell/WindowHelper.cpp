@@ -1,7 +1,7 @@
 #include "WindowHelper.h"
 
 WindowHelper::WindowHelper(SettingCategory video):
-video_("Video")
+video_(Presets::category("Video"))
 {
 	setVideo(video);
 }
@@ -45,7 +45,7 @@ int WindowHelper::calculateFps(sf::Time time)
 		else
 		{
 			//factor to convert microsecond to second is 1000000
-			return 1000000/time.asMicroseconds();
+			return 1000000/(int)time.asMicroseconds();
 		}
 	}
 	else

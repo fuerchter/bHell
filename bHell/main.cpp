@@ -2,6 +2,7 @@
 #include "SFML\Graphics.hpp"
 #include "SFML\Window.hpp"
 
+#include "Presets.h"
 #include "MenuManager.h"
 #include "WindowHelper.h"
 #include "GameStates.h"
@@ -11,7 +12,7 @@ int main()
 {
 	GameState state=GameStates::Menu;
 
-	MenuManager *menu=new MenuManager(state);
+	MenuManager *menu=new MenuManager(Presets::manager(state));
 	SettingCategory controls=menu->getCategory(GameStates::Controls);
 	SettingCategory video=menu->getCategory(GameStates::Video);
 

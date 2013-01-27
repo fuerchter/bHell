@@ -12,8 +12,6 @@ using namespace std;
 class SettingCategory
 {
 public:
-	//Uses preset titles to create categories, settings vector is uninitialized if parameter title doesn't match a preset
-	SettingCategory(string title);
 	SettingCategory(string title, vector<Setting> settings);
 	string getTitle();
 	bool isEmpty();
