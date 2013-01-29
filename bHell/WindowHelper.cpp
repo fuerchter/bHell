@@ -21,13 +21,31 @@ void WindowHelper::setVideo(SettingCategory video)
 
 void WindowHelper::createWindow(sf::RenderWindow *window)
 {
-	if(video_.getSetting("Windowed").getAttBool())
+	sf::VideoMode temp=sf::VideoMode::getDesktopMode();
+	bool windowed=video_.getSetting("Windowed").getAttBool();
+	int width=video_.getSetting("Width").getAttInt();
+	int height=video_.getSetting("Height").getAttInt();
+
+	//fixes #22 (Large resolution makes window disappear)
+	if(windowed)
 	{
-		window->create(sf::VideoMode(video_.getSetting("Width").getAttInt(), video_.getSetting("Height").getAttInt()), "Game", sf::Style::Close);
+		if(width>temp.width)
+		{
+			width=temp.width;
+		}
+		if(height>temp.height)
+		{
+			height=temp.height;
+		}
+	}
+
+	if(windowed)
+	{
+		window->create(sf::VideoMode(width, height), "Game", sf::Style::Close);
 	}
 	else
 	{
-		window->create(sf::VideoMode(video_.getSetting("Width").getAttInt(), video_.getSetting("Height").getAttInt()), "Game", sf::Style::Fullscreen);
+		window->create(sf::VideoMode(width, height), "Game", sf::Style::Fullscreen);
 	}
 	window->setFramerateLimit(video_.getSetting("Framecap").getAttInt());
 	window->setVerticalSyncEnabled(video_.getSetting("VSync").getAttBool());
