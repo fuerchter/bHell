@@ -11,6 +11,7 @@ currNo_(0), escAction_(escAction)
 	title_=category.getTitle();
 	for(int i=0; i<category.getSeSize(); i++)
 	{
+		//memory leak
 		elements_.push_back(MenuElement(category.getSetting(i).getTitle(), state, new Setting(category.getSetting(i))));
 	}
 }
@@ -110,7 +111,10 @@ vector<sf::Text> Menu::constructText(sf::Font &font, int vSpacing, sf::Color nor
 		}
 		texts.push_back(sf::Text(titles[i], font));
 
-		texts[i].setPosition((float)0, (float)(i*vSpacing));
+		//resolution independence
+		sf::Vector2f temp=TextBounds::getLocalSize(texts[i]);
+		texts[i].setOrigin(temp.x/2, temp.y/2);
+		texts[i].setPosition((float)0+temp.x/2, (float)(i*vSpacing)+temp.y/2);
 
 		if(getCurrNo()==i)
 		{

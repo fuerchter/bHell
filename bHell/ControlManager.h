@@ -2,6 +2,7 @@
 #define CONTROLMANAGER
 
 #include <map>
+
 #include "SettingCategory.h"
 #include "Control.h"
 

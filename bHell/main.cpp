@@ -79,6 +79,10 @@ int main()
 			vector<sf::Text> texts=menu->constructText();
 			for(int i=0; i<texts.size(); i++)
 			{
+				//resolution independence
+				texts[i].setPosition(helper.relPosition(texts[i].getPosition()));
+				texts[i].setScale(helper.getFactor());
+
 				window->draw(texts[i]);
 			}
 		}

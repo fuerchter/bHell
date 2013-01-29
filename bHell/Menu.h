@@ -3,6 +3,7 @@
 
 #include "SFML\Graphics.hpp"
 
+#include "TextBounds.h"
 #include "MenuElement.h"
 #include "SettingCategory.h"
 
@@ -10,7 +11,7 @@ class Menu
 {
 public:
 	Menu();
-	//Converts SettingCategory to MenuElement vector to create a menu
+	//Converts SettingCategory to MenuElement vector to create a menu (MAY CAUSE MEMORY LEAK: issue #10)
 	Menu(GameState state, GameState escAction, SettingCategory category);
 	//Most abstract constructor
 	Menu(string title, GameState escAction, vector<MenuElement> elements);
