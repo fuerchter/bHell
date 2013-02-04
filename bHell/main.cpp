@@ -79,9 +79,33 @@ int main()
 			vector<sf::Text> texts=menu->constructText();
 			for(int i=0; i<texts.size(); i++)
 			{
+				//text origin independent from its scale factor?
+
 				//resolution independence
 				texts[i].setPosition(helper.relPosition(texts[i].getPosition()));
-				texts[i].setScale(helper.getFactor());
+
+				//Just scaling
+				//texts[i].setScale(helper.getFactor());
+				
+				//CharSize then scaling
+				/*//Saving position to use after charSize was set
+				sf::Vector2f pos=texts[i].getPosition();
+
+				//calculating desired size from current and factors
+				sf::Vector2f size=TextBounds::getLocalSize(texts[i]);
+				sf::Vector2f desired(size.x*helper.getFactor().x, size.y*helper.getFactor().y);
+				int charSize=TextBounds::getCharSize(texts[i], desired, 1, 30);
+				texts[i].setCharacterSize(charSize);
+
+				//calculating size correction
+				size=TextBounds::getLocalSize(texts[i]);
+				sf::Vector2f factor(desired.x/size.x, desired.y/size.y);
+				texts[i].setScale(factor);
+
+				//correcting position
+				size=TextBounds::getLocalSize(texts[i]);
+				texts[i].setOrigin(size.x/2, size.y/2);
+				texts[i].setPosition(pos);*/
 
 				window->draw(texts[i]);
 			}
