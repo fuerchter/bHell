@@ -6,7 +6,7 @@ Menu::Menu()
 }
 
 Menu::Menu(GameState state, GameState escAction, SettingCategory category):
-currNo_(0), escAction_(escAction)
+currNo_(0), escAction_(escAction), changed_(true)
 {
 	title_=category.getTitle();
 	for(int i=0; i<category.getSeSize(); i++)
@@ -17,7 +17,7 @@ currNo_(0), escAction_(escAction)
 }
 
 Menu::Menu(string title, GameState escAction, vector<MenuElement> elements):
-title_(title), currNo_(0), escAction_(escAction), elements_(elements)
+title_(title), currNo_(0), escAction_(escAction), elements_(elements), changed_(true)
 {
 
 }
@@ -30,6 +30,7 @@ void Menu::goUp()
 	{
 		currNo_=elements_.size()-1;
 	}
+	changed_=true;
 }
 
 void Menu::goDown()
@@ -39,6 +40,7 @@ void Menu::goDown()
 	{
 		currNo_=0;
 	}
+	changed_=true;
 }
 
 GameState Menu::enter()
@@ -59,6 +61,13 @@ int Menu::getCurrNo()
 string Menu::getTitle()
 {
 	return title_;
+}
+
+bool Menu::hasChanged()
+{
+	bool changed=changed_;
+	changed_=false;
+	return changed;
 }
 
 
@@ -147,6 +156,7 @@ void Menu::setCurrAtt(string attribute)
 	{
 		elements_[currNo_].getSetting()->setAttribute(attribute);
 	}
+	changed_=true;
 }
 
 Setting::Type Menu::getCurrType()

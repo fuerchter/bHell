@@ -14,6 +14,7 @@ public:
 	vector<sf::Text> constructText(int vSpacing=30, sf::Color normal=sf::Color(255, 255, 255), sf::Color hover=sf::Color(0, 0, 0));
 	SettingCategory getCategory(GameState state);
 	bool categoryChanged(GameState state);
+	bool menuChanged();
 private:
 	GameState state_;
 	Menu menu_;

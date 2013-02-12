@@ -17,6 +17,7 @@ void WindowHelper::setVideo(SettingCategory video)
 			video_.setSetting(i, video.getSetting(i));
 		}
 	}
+	calculateScreenSpace();
 }
 
 void WindowHelper::createWindow(sf::RenderWindow *window)
@@ -81,14 +82,56 @@ void WindowHelper::showFps(sf::Time time)
 }
 
 
+void WindowHelper::calculateScreenSpace()
+{
+	if(video_.getSetting("Border").getAttBool())
+	{
+		float desAspect=(float)defWidth/(float)defHeight;
+		float aspect=(float)video_.getSetting("Width").getAttInt()/(float)video_.getSetting("Height").getAttInt();
+		sf::Vector2f newSize(video_.getSetting("Width").getAttInt(), video_.getSetting("Height").getAttInt());
+		if(aspect>desAspect)
+		{
+			newSize.x=newSize.y*desAspect;
+		}
+		else if(aspect<desAspect)
+		{
+			newSize.y=newSize.x/desAspect;
+		}
+		sf::Vector2f newPosition(video_.getSetting("Width").getAttInt()/2-newSize.x/2, video_.getSetting("Height").getAttInt()/2-newSize.y/2);
+
+		screenSpace_=sf::RectangleShape(newSize);
+		screenSpace_.setPosition(newPosition);
+	}
+	else
+	{
+		screenSpace_=sf::RectangleShape(sf::Vector2f(video_.getSetting("Width").getAttInt(), video_.getSetting("Height").getAttInt()));
+	}
+}
+
+bool WindowHelper::getBorder()
+{
+	return video_.getSetting("Border").getAttBool();
+}
+
+sf::RectangleShape WindowHelper::getScreenSpace()
+{
+	return screenSpace_;
+}
+
 sf::Vector2f WindowHelper::getFactor()
 {
-	float width=(float)video_.getSetting("Width").getAttInt();
-	float height=(float)video_.getSetting("Height").getAttInt();
+	float width=screenSpace_.getSize().x;
+	float height=screenSpace_.getSize().y;
 	return sf::Vector2f(width/(float)defWidth, height/(float)defHeight);
 }
 
 sf::Vector2f WindowHelper::relPosition(sf::Vector2f position)
 {
-	return sf::Vector2f(position.x*getFactor().x, position.y*getFactor().y);
+	sf::Vector2f res(position.x*getFactor().x, position.y*getFactor().y);
+	if(video_.getSetting("Border").getAttBool())
+	{
+		res.x+=screenSpace_.getPosition().x;
+		res.y+=screenSpace_.getPosition().y;
+	}
+	return res;
 }

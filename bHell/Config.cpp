@@ -76,7 +76,7 @@ SettingCategory Config::readCategory(SettingCategory category)
 
 SettingCategory Config::getCategory(SettingCategory category)
 {
-	if(doesCategoryExist(category))
+	if(doesCategoryExist(category) || category.getSeSize()==0)
 	{
 		return readCategory(category);
 	}

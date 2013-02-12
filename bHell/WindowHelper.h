@@ -20,17 +20,21 @@ public:
 	//Fills up video_ with new values if the Setting title matches
 	void setVideo(SettingCategory video);
 	void createWindow(sf::RenderWindow *window);
-
+	
 	int calculateFps(sf::Time time);
 	//NEEDS TO BE DRAWN
 	void showFps(sf::Time time);
 
+	void calculateScreenSpace();
+	bool getBorder();
+	sf::RectangleShape getScreenSpace();
 	sf::Vector2f getFactor();
 	sf::Vector2f relPosition(sf::Vector2f position);
 private:
 	SettingCategory video_;
 	static const int defWidth=1920;
 	static const int defHeight=1080;
+	sf::RectangleShape screenSpace_;
 };
 
 #endif

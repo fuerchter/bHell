@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 #include "SFML\System.hpp"
 #include "SFML\Graphics.hpp"
 #include "SFML\Window.hpp"
@@ -72,7 +75,15 @@ int main()
 				}
 			}
 		}
-		window->clear(sf::Color(255,0,0));
+		window->clear(sf::Color(255, 255, 0));
+
+		if(helper.getBorder())
+		{
+			sf::RectangleShape space=helper.getScreenSpace();
+			//cout << space.getSize().x << ", " << space.getSize().y << endl;
+			space.setFillColor(sf::Color(255, 0, 0));
+			window->draw(space);
+		}
 
 		if(state!=GameStates::Start && state!=GameStates::Quit)
 		{
@@ -88,7 +99,7 @@ int main()
 				//texts[i].setScale(helper.getFactor());
 				
 				//CharSize then scaling
-				/*//Saving position to use after charSize was set
+				//Saving position to use after charSize was set
 				sf::Vector2f pos=texts[i].getPosition();
 
 				//calculating desired size from current and factors
@@ -105,7 +116,7 @@ int main()
 				//correcting position
 				size=TextBounds::getLocalSize(texts[i]);
 				texts[i].setOrigin(size.x/2, size.y/2);
-				texts[i].setPosition(pos);*/
+				texts[i].setPosition(pos);
 
 				window->draw(texts[i]);
 			}

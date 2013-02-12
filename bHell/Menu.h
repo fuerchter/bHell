@@ -22,6 +22,7 @@ public:
 	GameState escape();
 	int getCurrNo();
 	string getTitle();
+	bool hasChanged();
 
 	MenuElement getEl(int i);
 	MenuElement getCurrEl();
@@ -44,6 +45,7 @@ private:
 	GameState escAction_;
 	vector<MenuElement> elements_;
 	int currNo_;
+	bool changed_;
 };
 
 #endif

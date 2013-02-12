@@ -19,14 +19,13 @@ public:
 	Control(Setting setting);
 
 	void setSensitivity(int sensitivity);
+	void setThreshold(int threshold);
 	//gets current position dependent from this Control's sensitivity
 	float axisPosition();
-	void setThreshold(int threshold);
 	bool axisMoved();
 	bool buttonPressed();
 	bool menuButtonPressed(sf::Event currentEvent);
 private:
-	//type is no enum because it has to be read out from the config
 	Type type_;
 	sf::Keyboard::Key key_;
 	sf::Mouse::Button mouseButton_;

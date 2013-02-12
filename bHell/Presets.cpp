@@ -17,9 +17,10 @@ SettingCategory Presets::category(string title)
 		settings.push_back(Setting("VSync", "0", Setting::Bool));
 		settings.push_back(Setting("Framecap", "60", Setting::Int));
 		settings.push_back(Setting("Windowed", "0", Setting::Bool));
+		settings.push_back(Setting("Border", "1", Setting::Bool));
 		settings.push_back(Setting("Show FPS", "0", Setting::Bool));
 	}
-	else if(title.find("Controls")==0)
+	/*else if(title.find("Controls")==0)
 	{
 		settings.push_back(Setting("Up", "Keyboard_Up", Setting::Input));
 		settings.push_back(Setting("Down", "Keyboard_Down", Setting::Input));
@@ -27,8 +28,8 @@ SettingCategory Presets::category(string title)
 		settings.push_back(Setting("Right", "Keyboard_Right", Setting::Input));
 		settings.push_back(Setting("Enter", "Keyboard_Return", Setting::Input));
 		settings.push_back(Setting("Back", "Keyboard_Escape", Setting::Input));
-	}
-	else if(title=="Menu Controls")
+	}*/
+	else if(title=="Controls")
 	{
 		settings.push_back(Setting("Up", "Keyboard_Up", Setting::Input));
 		settings.push_back(Setting("Down", "Keyboard_Down", Setting::Input));

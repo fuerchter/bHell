@@ -169,6 +169,11 @@ bool MenuManager::categoryChanged(GameState state)
 	}
 }
 
+bool MenuManager::menuChanged()
+{
+	return menu_.hasChanged();
+}
+
 void MenuManager::changeSetting(Setting::Type type)
 {
 	change_=Setting::Error;
